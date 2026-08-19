@@ -1,0 +1,133 @@
+{
+  "faqs": [
+    {
+      "id": "faq_001",
+      "intent": "what_is_career_pathfinder",
+      "question": "What is Career Pathfinder?",
+      "keywords": [
+        "what is career pathfinder",
+        "what does this app do",
+        "what is this application",
+        "how does career pathfinder work"
+      ],
+      "answer": "Career Pathfinder is an AI-assisted career guidance platform that analyzes your academic background, skills and interests to recommend suitable career roles and provide personalized learning guidance."
+    },
+    {
+      "id": "faq_002",
+      "intent": "how_recommendation_works",
+      "question": "How are career recommendations generated?",
+      "keywords": [
+        "how are recommendations generated",
+        "how does recommendation work",
+        "how do you recommend careers",
+        "how are careers selected",
+        "how does the model work"
+      ],
+      "answer": "Your academic background, skills and career interests are compared with the requirements of different career roles. The system calculates a suitability score for each role and presents the strongest matches."
+    },
+    {
+      "id": "faq_003",
+      "intent": "what_is_match_percentage",
+      "question": "What does the match percentage mean?",
+      "keywords": [
+        "what does match percentage mean",
+        "what is match percentage",
+        "how is percentage calculated",
+        "what does suitability percentage mean",
+        "how should i understand the score"
+      ],
+      "answer": "The match percentage represents how closely your current profile aligns with a particular career role based on factors such as your branch, skills and interests. A higher percentage indicates stronger alignment."
+    },
+    {
+      "id": "faq_004",
+      "intent": "can_i_change_career",
+      "question": "Can I choose a different career?",
+      "keywords": [
+        "can i choose another career",
+        "can i choose a different career",
+        "what if i don't like the recommendation",
+        "can i change my career",
+        "can i pursue another role"
+      ],
+      "answer": "Yes. The recommendations are guidance rather than restrictions. You can pursue another career if you are willing to develop the required skills and knowledge."
+    },
+    {
+      "id": "faq_005",
+      "intent": "skills_vs_interests",
+      "question": "What is more important, skills or interests?",
+      "keywords": [
+        "skills or interests",
+        "skills vs interests",
+        "what is more important skills or interests",
+        "should i follow my skills",
+        "should i follow my interests"
+      ],
+      "answer": "Both are important. Skills indicate what you can currently do, while interests indicate the areas you are motivated to explore. A strong career choice usually balances both."
+    },
+    {
+      "id": "faq_006",
+      "intent": "student_beginner",
+      "question": "I am a beginner. Can I still follow the recommended career?",
+      "keywords": [
+        "i am a beginner",
+        "i don't have many skills",
+        "can a beginner follow this career",
+        "i am new to this",
+        "i have no experience"
+      ],
+      "answer": "Yes. The recommendation indicates a direction rather than requiring you to already possess every skill. You can follow the suggested learning path and build projects progressively."
+    },
+    {
+      "id": "faq_007",
+      "intent": "importance_of_projects",
+      "question": "Why are projects important?",
+      "keywords": [
+        "why are projects important",
+        "why should i build projects",
+        "importance of projects",
+        "do projects matter",
+        "are projects important for jobs"
+      ],
+      "answer": "Projects demonstrate that you can apply your knowledge to practical problems. They also strengthen your portfolio and give you examples to discuss during interviews."
+    },
+    {
+      "id": "faq_008",
+      "intent": "importance_of_certifications",
+      "question": "Are certifications necessary?",
+      "keywords": [
+        "are certifications necessary",
+        "do i need certifications",
+        "are certificates important",
+        "should i get certifications",
+        "do certifications matter"
+      ],
+      "answer": "Certifications can validate specific skills, but they are not a replacement for practical knowledge and projects. For most technical careers, projects and demonstrable skills are especially important."
+    },
+    {
+      "id": "faq_009",
+      "intent": "career_change",
+      "question": "Can I change my career later?",
+      "keywords": [
+        "can i change career later",
+        "career switch",
+        "switch careers",
+        "change career path",
+        "can i switch from one career to another"
+      ],
+      "answer": "Yes. Career paths are not permanent. Skills from one technical role can often transfer to related roles, and additional learning can help you move into a different specialization."
+    },
+    {
+      "id": "faq_010",
+      "intent": "job_preparation",
+      "question": "What should I focus on for placements?",
+      "keywords": [
+        "what should i focus on for placements",
+        "placement preparation",
+        "how should i prepare for placements",
+        "what should i prepare for jobs",
+        "placement skills"
+      ],
+      "answer": "Focus on the core skills required for your target role, practical projects, problem-solving and interview preparation. Build a clear resume and be prepared to explain your projects and technical decisions."
+    }
+  ]
+}

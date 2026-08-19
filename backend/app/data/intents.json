@@ -1,0 +1,205 @@
+{
+  "intents": [
+    {
+      "intent": "best_match",
+      "description": "Questions asking why a recommended career is suitable or why it is the strongest match.",
+      "keywords": [
+        "best match",
+        "strongest match",
+        "top match",
+        "why did you recommend",
+        "why am i suitable",
+        "why am i a good fit",
+        "why this career",
+        "why this role",
+        "most suitable",
+        "highest suitable",
+        "best career for me",
+        "best role for me"
+      ]
+    },
+    {
+      "intent": "all_roles",
+      "description": "Questions asking to see all recommended career roles and their suitability.",
+      "keywords": [
+        "all roles",
+        "all careers",
+        "all matches",
+        "other roles",
+        "other careers",
+        "full ranking",
+        "full list",
+        "show roles",
+        "show careers",
+        "career recommendations",
+        "my recommendations"
+      ]
+    },
+    {
+      "intent": "skills",
+      "description": "Questions asking which skills should be learned or improved for a career.",
+      "keywords": [
+        "what skills",
+        "skills should i learn",
+        "what should i learn",
+        "skills to learn",
+        "learn first",
+        "learn next",
+        "technical skills",
+        "required skills",
+        "important skills",
+        "skills needed"
+      ]
+    },
+    {
+      "intent": "skill_gap",
+      "description": "Questions asking which skills the user is missing.",
+      "keywords": [
+        "skills am i missing",
+        "skills do i lack",
+        "missing skills",
+        "skill gap",
+        "what am i missing",
+        "skills i don't have",
+        "what skills should i improve",
+        "which skills am i weak in"
+      ]
+    },
+    {
+      "intent": "courses",
+      "description": "Questions asking about courses, certifications or training.",
+      "keywords": [
+        "course",
+        "courses",
+        "certification",
+        "certifications",
+        "certificate",
+        "training",
+        "where should i study",
+        "what course",
+        "which course",
+        "what certification"
+      ]
+    },
+    {
+      "intent": "comparison",
+      "description": "Questions comparing two or more career roles.",
+      "keywords": [
+        "compare",
+        "comparison",
+        "difference between",
+        "which is better",
+        "which one is better",
+        "better career",
+        "better role",
+        "versus",
+        "vs",
+        "which should i choose",
+        "which career should i choose",
+        "compare my careers"
+      ]
+    },
+    {
+      "intent": "roadmap",
+      "description": "Questions asking for a career learning roadmap or learning path.",
+      "keywords": [
+        "roadmap",
+        "learning path",
+        "learning plan",
+        "study plan",
+        "how should i learn",
+        "step by step",
+        "steps to become",
+        "career roadmap",
+        "learning roadmap"
+      ]
+    },
+    {
+      "intent": "job_readiness",
+      "description": "Questions asking how to become ready for jobs or placements.",
+      "keywords": [
+        "job ready",
+        "job-ready",
+        "ready for a job",
+        "become employable",
+        "get a job",
+        "prepare for job",
+        "job preparation",
+        "placement preparation",
+        "placement ready",
+        "how to get hired"
+      ]
+    },
+    {
+      "intent": "get_started",
+      "description": "Questions asking how to start learning or pursuing the recommended career.",
+      "keywords": [
+        "get started",
+        "how do i start",
+        "where do i start",
+        "first step",
+        "start with",
+        "begin",
+        "how can i start",
+        "where should i begin"
+      ]
+    },
+    {
+      "intent": "next_steps",
+      "description": "Questions asking what the user should do next.",
+      "keywords": [
+        "what next",
+        "next step",
+        "what should i do next",
+        "what do i do now",
+        "what should i do",
+        "next",
+        "what should i focus on"
+      ]
+    },
+    {
+      "intent": "salary",
+      "description": "Questions about salary, compensation and earning potential.",
+      "keywords": [
+        "salary",
+        "pay",
+        "pays",
+        "earning",
+        "earn",
+        "income",
+        "package",
+        "ctc",
+        "compensation",
+        "how much can i earn",
+        "salary range"
+      ]
+    },
+    {
+      "intent": "projects",
+      "description": "Questions asking what projects should be built for a career.",
+      "keywords": [
+        "projects",
+        "project ideas",
+        "what projects",
+        "projects should i build",
+        "project ideas for",
+        "portfolio projects",
+        "what should i build",
+        "projects for my career"
+      ]
+    },
+    {
+      "intent": "certifications",
+      "description": "Questions asking about useful certifications for a career.",
+      "keywords": [
+        "certification",
+        "certifications",
+        "certificate",
+        "certificates",
+        "which certification",
+        "certification should i do",
+        "certifications should i get"
+      ]
+    }
+  ]
+}

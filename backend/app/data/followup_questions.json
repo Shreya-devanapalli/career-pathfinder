@@ -1,0 +1,34 @@
+{
+  "questions": {
+    "best_match": [
+      "What skills am I missing?",
+      "Give me a roadmap for this career",
+      "What courses should I take?"
+    ],
+    "skill_gap": [
+      "Show me courses for these skills",
+      "What certifications should I get?",
+      "Give me a roadmap"
+    ],
+    "roadmap": [
+      "What should I learn first?",
+      "What courses should I take?",
+      "What projects should I build?"
+    ],
+    "courses": [
+      "What certifications should I get?",
+      "Give me a roadmap",
+      "What projects should I build?"
+    ],
+    "comparison": [
+      "Which one is better for me?",
+      "What skills does the other role require?",
+      "What is the salary difference?"
+    ],
+    "projects": [
+      "Which project should I build first?",
+      "What skills will this project teach me?",
+      "How do I become job ready?"
+    ]
+  }
+}

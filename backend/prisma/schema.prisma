@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model branches {
+  id                  BigInt                @id @default(autoincrement())
+  branch_name         String                @unique
+  branch_code         String?
+  category            String
+  description         String?
+  career_branches     career_branches[]
+  evaluation_profiles evaluation_profiles[]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model career_branches {
+  id        BigInt   @id @default(autoincrement())
+  career_id BigInt
+  branch_id BigInt
+  relevance String
+  branches  branches @relation(fields: [branch_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  careers   careers  @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([career_id, branch_id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model career_projects {
+  career_id  BigInt
+  project_id BigInt
+  careers    careers  @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  projects   projects @relation(fields: [project_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([career_id, project_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model career_skills {
+  id         BigInt   @id @default(autoincrement())
+  career_id  BigInt?
+  skill_id   BigInt?
+  importance String?
+  skill_type String?  @default("core")
+  careers    careers? @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  skills     skills?  @relation(fields: [skill_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model careers {
+  id                  BigInt                @id @default(autoincrement())
+  career_name         String
+  description         String?
+  industry            String?
+  career_branches     career_branches[]
+  career_projects     career_projects[]
+  career_skills       career_skills[]
+  certifications      certifications[]
+  evaluation_profiles evaluation_profiles[]
+  job_roles           job_roles[]
+  roadmaps            roadmaps?
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model certifications {
+  id                 BigInt   @id @default(autoincrement())
+  certification_name String
+  career_id          BigInt?
+  provider           String?
+  certification_url  String?
+  careers            careers? @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model courses {
+  id          BigInt  @id @default(autoincrement())
+  course_name String
+  skill_id    BigInt?
+  provider    String?
+  level       String?
+  course_url  String?
+  skills      skills? @relation(fields: [skill_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model evaluation_profile_interests {
+  profile_id          BigInt
+  interest            String
+  evaluation_profiles evaluation_profiles @relation(fields: [profile_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, interest])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model evaluation_profile_skills {
+  profile_id          BigInt
+  skill_id            BigInt
+  evaluation_profiles evaluation_profiles @relation(fields: [profile_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  skills              skills              @relation(fields: [skill_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, skill_id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model evaluation_profiles {
+  id                           BigInt                         @id @default(autoincrement())
+  branch_id                    BigInt?
+  expected_career_id           BigInt?
+  profile_name                 String?
+  created_at                   DateTime?                      @default(now()) @db.Timestamptz(6)
+  evaluation_profile_interests evaluation_profile_interests[]
+  evaluation_profile_skills    evaluation_profile_skills[]
+  branches                     branches?                      @relation(fields: [branch_id], references: [id], onUpdate: NoAction)
+  careers                      careers?                       @relation(fields: [expected_career_id], references: [id], onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model faqs {
+  id         BigInt    @id @default(autoincrement())
+  intent     String?
+  question   String
+  keywords   String[]
+  answer     String
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model followup_questions {
+  id            BigInt    @id @default(autoincrement())
+  category      String
+  question      String
+  display_order Int?      @default(0)
+  created_at    DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model intents {
+  id          BigInt    @id @default(autoincrement())
+  intent      String    @unique
+  description String?
+  keywords    String[]
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model job_roles {
+  id        BigInt   @id @default(autoincrement())
+  career_id BigInt?
+  job_title String
+  careers   careers? @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model project_skills {
+  project_id BigInt
+  skill_id   BigInt
+  projects   projects @relation(fields: [project_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  skills     skills   @relation(fields: [skill_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([project_id, skill_id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model projects {
+  id              BigInt            @id @default(autoincrement())
+  title           String
+  description     String?
+  level           String?
+  created_at      DateTime?         @default(now()) @db.Timestamptz(6)
+  career_projects career_projects[]
+  project_skills  project_skills[]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model roadmap_phase_skills {
+  roadmap_phase_id BigInt
+  skill_id         BigInt
+  roadmap_phases   roadmap_phases @relation(fields: [roadmap_phase_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  skills           skills         @relation(fields: [skill_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([roadmap_phase_id, skill_id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model roadmap_phases {
+  id                   BigInt                 @id @default(autoincrement())
+  roadmap_id           BigInt
+  phase_number         Int
+  title                String?
+  description          String?
+  roadmap_phase_skills roadmap_phase_skills[]
+  roadmaps             roadmaps               @relation(fields: [roadmap_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([roadmap_id, phase_number])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model roadmaps {
+  id             BigInt           @id @default(autoincrement())
+  career_id      BigInt           @unique
+  title          String?
+  description    String?
+  created_at     DateTime?        @default(now()) @db.Timestamptz(6)
+  roadmap_phases roadmap_phases[]
+  careers        careers          @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model skills {
+  id                        BigInt                      @id @default(autoincrement())
+  skill_name                String                      @unique
+  category                  String?
+  career_skills             career_skills[]
+  courses                   courses[]
+  evaluation_profile_skills evaluation_profile_skills[]
+  project_skills            project_skills[]
+  roadmap_phase_skills      roadmap_phase_skills[]
+}

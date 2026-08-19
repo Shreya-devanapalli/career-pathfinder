@@ -1,0 +1,92 @@
+[
+  {
+    "branch": "Data Science",
+    "skills": ["Python", "SQL", "Pandas", "NumPy", "Machine Learning"],
+    "interests": ["AI", "Machine Learning", "Data Science", "Analytics"],
+    "expected_career": "Data Scientist"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Python", "Machine Learning", "Statistics", "SQL"],
+    "interests": ["AI", "Machine Learning", "Deep Learning"],
+    "expected_career": "Machine Learning Engineer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Python", "Machine Learning", "Deep Learning", "NLP"],
+    "interests": ["AI", "Generative AI", "Deep Learning"],
+    "expected_career": "AI Engineer"
+  },
+  {
+    "branch": "Data Science",
+    "skills": ["Python", "SQL", "Excel", "Statistics", "Power BI"],
+    "interests": ["Data Analytics", "Business Intelligence"],
+    "expected_career": "Data Analyst"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["SQL", "Excel", "Power BI", "Data Analysis"],
+    "interests": ["Business Intelligence", "Data Analytics"],
+    "expected_career": "BI Developer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Python", "FastAPI", "SQL", "PostgreSQL", "Docker"],
+    "interests": ["Backend Development", "Web Development"],
+    "expected_career": "Backend Web Developer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Git"],
+    "interests": ["Frontend Development", "Web Development"],
+    "expected_career": "Frontend Developer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Node.js", "SQL"],
+    "interests": ["Web Development", "Software Development"],
+    "expected_career": "Full Stack Web Developer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Cloud Computing", "Linux", "Networking", "AWS", "Docker"],
+    "interests": ["Cloud Computing", "Infrastructure"],
+    "expected_career": "Cloud Engineer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Linux", "Git", "Cloud Computing", "Docker", "Kubernetes"],
+    "interests": ["DevOps", "Cloud Computing", "Automation"],
+    "expected_career": "DevOps Engineer"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Networking", "Linux", "Cybersecurity", "Python"],
+    "interests": ["Cybersecurity", "Networking", "Ethical Hacking"],
+    "expected_career": "Cybersecurity Analyst"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["SQL", "PostgreSQL", "MySQL", "MongoDB"],
+    "interests": ["Databases", "Data Management"],
+    "expected_career": "Database Administrator"
+  },
+  {
+    "branch": "CSE",
+    "skills": ["Python", "Java", "Data Structures", "Algorithms", "OOP", "Git"],
+    "interests": ["Software Development", "Programming"],
+    "expected_career": "Software Developer"
+  },
+  {
+    "branch": "AI",
+    "skills": ["Python", "Mathematics", "Machine Learning", "Statistics", "Deep Learning"],
+    "interests": ["AI", "Research", "Machine Learning"],
+    "expected_career": "AI Researcher"
+  },
+  {
+    "branch": "Data Science",
+    "skills": ["Data Analysis", "Excel", "SQL", "Power BI"],
+    "interests": ["Business Analytics", "Management", "Data Analytics"],
+    "expected_career": "Business Analyst"
+  }
+]

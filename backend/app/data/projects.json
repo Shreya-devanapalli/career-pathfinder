@@ -1,0 +1,301 @@
+{
+  "projects": [
+    {
+      "career": "Data Scientist",
+      "projects": [
+        {
+          "title": "Customer Churn Prediction",
+          "level": "Beginner",
+          "skills": ["Python", "Pandas", "Scikit-learn", "Machine Learning"],
+          "description": "Build a machine learning model to predict whether customers are likely to leave a service."
+        },
+        {
+          "title": "Sales Forecasting Dashboard",
+          "level": "Intermediate",
+          "skills": ["Python", "Pandas", "Time Series", "Matplotlib", "Streamlit"],
+          "description": "Analyze historical sales data and build a forecasting dashboard."
+        },
+        {
+          "title": "End-to-End Data Science Pipeline",
+          "level": "Advanced",
+          "skills": ["Python", "Pandas", "Scikit-learn", "SQL", "FastAPI", "Docker"],
+          "description": "Create a complete data science application from data preprocessing and model training to API deployment."
+        }
+      ]
+    },
+    {
+      "career": "Machine Learning Engineer",
+      "projects": [
+        {
+          "title": "ML Model Deployment API",
+          "level": "Beginner",
+          "skills": ["Python", "Scikit-learn", "FastAPI"],
+          "description": "Train a machine learning model and expose predictions through a REST API."
+        },
+        {
+          "title": "Recommendation System",
+          "level": "Intermediate",
+          "skills": ["Python", "Pandas", "Scikit-learn", "Machine Learning"],
+          "description": "Build a recommendation engine using user preferences and item similarity."
+        },
+        {
+          "title": "Production ML Pipeline",
+          "level": "Advanced",
+          "skills": ["Python", "Docker", "FastAPI", "MLflow", "MLOps"],
+          "description": "Build and deploy a production-style machine learning pipeline with model tracking and monitoring."
+        }
+      ]
+    },
+    {
+      "career": "AI Engineer",
+      "projects": [
+        {
+          "title": "AI Text Classification System",
+          "level": "Beginner",
+          "skills": ["Python", "NLP", "Scikit-learn"],
+          "description": "Build a system that classifies text into predefined categories."
+        },
+        {
+          "title": "Document Question Answering System",
+          "level": "Intermediate",
+          "skills": ["Python", "NLP", "Embeddings", "LLM"],
+          "description": "Create an application that answers questions using information from uploaded documents."
+        },
+        {
+          "title": "AI Career Assistant",
+          "level": "Advanced",
+          "skills": ["Python", "FastAPI", "NLP", "LLM", "Vector Database"],
+          "description": "Build an AI assistant that provides personalized career guidance using profile and career data."
+        }
+      ]
+    },
+    {
+      "career": "Data Analyst",
+      "projects": [
+        {
+          "title": "Student Performance Analysis",
+          "level": "Beginner",
+          "skills": ["Python", "Pandas", "Matplotlib"],
+          "description": "Analyze student performance data and identify important trends."
+        },
+        {
+          "title": "Business Analytics Dashboard",
+          "level": "Intermediate",
+          "skills": ["SQL", "Power BI", "Data Visualization"],
+          "description": "Create an interactive dashboard showing business performance metrics."
+        },
+        {
+          "title": "Customer Analytics Platform",
+          "level": "Advanced",
+          "skills": ["SQL", "Python", "Power BI", "Statistics"],
+          "description": "Analyze customer behavior and create actionable business insights."
+        }
+      ]
+    },
+    {
+      "career": "BI Developer",
+      "projects": [
+        {
+          "title": "Sales BI Dashboard",
+          "level": "Beginner",
+          "skills": ["Power BI", "SQL"],
+          "description": "Create a dashboard showing sales performance and trends."
+        },
+        {
+          "title": "Business KPI Dashboard",
+          "level": "Intermediate",
+          "skills": ["Power BI", "DAX", "SQL"],
+          "description": "Build an interactive KPI dashboard for business decision-making."
+        },
+        {
+          "title": "Enterprise BI Reporting System",
+          "level": "Advanced",
+          "skills": ["Power BI", "DAX", "SQL", "Data Warehousing"],
+          "description": "Build a scalable reporting solution using data warehouse concepts and BI tools."
+        }
+      ]
+    },
+    {
+      "career": "Cloud / DevOps Engineer",
+      "projects": [
+        {
+          "title": "Cloud Application Deployment",
+          "level": "Beginner",
+          "skills": ["Linux", "Cloud", "Git"],
+          "description": "Deploy a simple web application to a cloud platform."
+        },
+        {
+          "title": "Dockerized Web Application",
+          "level": "Intermediate",
+          "skills": ["Docker", "Linux", "Git", "Cloud"],
+          "description": "Containerize and deploy a web application using Docker."
+        },
+        {
+          "title": "CI/CD Deployment Pipeline",
+          "level": "Advanced",
+          "skills": ["Docker", "GitHub Actions", "Cloud", "CI/CD"],
+          "description": "Build an automated pipeline that tests and deploys an application."
+        }
+      ]
+    },
+    {
+      "career": "Software Developer",
+      "projects": [
+        {
+          "title": "Task Management Application",
+          "level": "Beginner",
+          "skills": ["Python", "SQL", "HTML", "CSS"],
+          "description": "Build a web application for creating and managing tasks."
+        },
+        {
+          "title": "Full Stack Application",
+          "level": "Intermediate",
+          "skills": ["React", "FastAPI", "PostgreSQL"],
+          "description": "Build a complete frontend and backend application with database integration."
+        },
+        {
+          "title": "Scalable Web Platform",
+          "level": "Advanced",
+          "skills": ["React", "FastAPI", "PostgreSQL", "Docker", "Cloud"],
+          "description": "Build and deploy a scalable full-stack application."
+        }
+      ]
+    },
+    {
+      "career": "Database Administrator",
+      "projects": [
+        {
+          "title": "Database Backup System",
+          "level": "Beginner",
+          "skills": ["SQL", "PostgreSQL"],
+          "description": "Create a database backup and restore workflow."
+        },
+        {
+          "title": "Database Performance Monitor",
+          "level": "Intermediate",
+          "skills": ["SQL", "PostgreSQL", "Database Optimization"],
+          "description": "Monitor queries and identify database performance bottlenecks."
+        }
+      ]
+    },
+    {
+      "career": "Cybersecurity Analyst",
+      "projects": [
+        {
+          "title": "Log Analysis Tool",
+          "level": "Beginner",
+          "skills": ["Python", "Linux", "Cybersecurity"],
+          "description": "Analyze system logs and identify suspicious activity."
+        },
+        {
+          "title": "Network Security Monitor",
+          "level": "Intermediate",
+          "skills": ["Python", "Networking", "Cybersecurity"],
+          "description": "Build a tool for monitoring network traffic and identifying anomalies."
+        }
+      ]
+    },
+    {
+      "career": "Business Analyst",
+      "projects": [
+        {
+          "title": "Business Requirements Analysis",
+          "level": "Beginner",
+          "skills": ["Excel", "SQL", "Business Analysis"],
+          "description": "Analyze a business problem and document functional requirements."
+        },
+        {
+          "title": "Business Intelligence Case Study",
+          "level": "Intermediate",
+          "skills": ["SQL", "Power BI", "Business Analysis"],
+          "description": "Analyze business data and present recommendations using a BI dashboard."
+        }
+      ]
+    },
+    {
+      "career": "Product Manager",
+      "projects": [
+        {
+          "title": "Product Case Study",
+          "level": "Beginner",
+          "skills": ["Product Management", "Market Research"],
+          "description": "Analyze a real-world problem and propose a product solution."
+        },
+        {
+          "title": "Product Roadmap Project",
+          "level": "Intermediate",
+          "skills": ["Product Management", "User Research", "Analytics"],
+          "description": "Create a product roadmap based on user needs and business priorities."
+        }
+      ]
+    },
+    {
+      "career": "UI/UX Designer",
+      "projects": [
+        {
+          "title": "Mobile App UX Redesign",
+          "level": "Beginner",
+          "skills": ["Figma", "UX Design", "User Research"],
+          "description": "Redesign an existing application based on usability problems."
+        },
+        {
+          "title": "Complete Product Design",
+          "level": "Intermediate",
+          "skills": ["Figma", "UI Design", "UX Research", "Prototyping"],
+          "description": "Design a complete digital product from research to interactive prototype."
+        }
+      ]
+    },
+    {
+      "career": "Research Scientist",
+      "projects": [
+        {
+          "title": "Machine Learning Research Study",
+          "level": "Intermediate",
+          "skills": ["Python", "Machine Learning", "Statistics"],
+          "description": "Compare machine learning algorithms on a research dataset."
+        },
+        {
+          "title": "Deep Learning Research Project",
+          "level": "Advanced",
+          "skills": ["Python", "Deep Learning", "PyTorch", "Research"],
+          "description": "Conduct an experimental deep learning study and evaluate different approaches."
+        }
+      ]
+    },
+    {
+      "career": "NLP Engineer",
+      "projects": [
+        {
+          "title": "Sentiment Analysis System",
+          "level": "Beginner",
+          "skills": ["Python", "NLP", "Scikit-learn"],
+          "description": "Build a sentiment classification model for text data."
+        },
+        {
+          "title": "Document Search Engine",
+          "level": "Intermediate",
+          "skills": ["Python", "NLP", "Embeddings"],
+          "description": "Build a semantic search system for a collection of documents."
+        }
+      ]
+    },
+    {
+      "career": "Data Engineer",
+      "projects": [
+        {
+          "title": "ETL Data Pipeline",
+          "level": "Beginner",
+          "skills": ["Python", "SQL", "Pandas"],
+          "description": "Build a pipeline that extracts, transforms and loads structured data."
+        },
+        {
+          "title": "Big Data Processing Pipeline",
+          "level": "Advanced",
+          "skills": ["Python", "SQL", "Spark", "Kafka"],
+          "description": "Build a distributed data processing pipeline using streaming and batch technologies."
+        }
+      ]
+    }
+  ]
+}
