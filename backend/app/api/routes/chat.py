@@ -72,12 +72,9 @@ async def send_message(
     else:
         try:
             reply_text = await get_followup_reply(rec, history, payload.message)
-        except Exception as e:
-            print("GROQ ERROR:", repr(e))
-            reply_text = (
-                "I couldn't connect to the AI service right now. "
-                f"Error: {str(e)}"
-                )
+        except Exception as exc:
+            print("GROQ ERROR:", repr(exc))
+            reply_text = _offline_reply(rec)
 
     bot_msg = ChatMessage(
         user_id=current_user.id,
