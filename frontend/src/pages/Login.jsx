@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { btnPrimary, colors, fonts, inputStyle, page } from '../styles/theme'
+import client from '../api/client'
 
 export default function Login() {
   const { login } = useAuth()
@@ -17,7 +18,16 @@ export default function Login() {
     setLoading(true)
     try {
       await login(email, password)
-      navigate('/assessment')
+      try {
+        const { data } = await client.get('/api/recommend/history')
+        if (data && data.length > 0) {
+          navigate('/dashboard')
+        } else {
+          navigate('/assessment')
+        }
+      } catch {
+        navigate('/assessment')
+}
     } catch (err) {
       setError(err?.response?.data?.detail || 'Login failed. Check your email and password.')
     } finally {
