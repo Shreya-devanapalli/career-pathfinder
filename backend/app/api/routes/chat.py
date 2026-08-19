@@ -63,18 +63,21 @@ async def send_message(
         .all()
     )
 
-    # First try to answer from the predefined FAQ / tag-question patterns,
-    # entirely locally. Groq is only called for questions that don't
-    # match a known pattern, which keeps chat usage — and quota burn —
-    # much lower than before.
+    # First trying to answer from our predefined faq model,entirely locally.
+    # But Groq is only called for questions that don't match a known pattern for the local model.
+    # This keeps the chat usage and quota burn much lower than before.
     local_reply = try_answer_locally(rec, payload.message)
     if local_reply is not None:
         reply_text = local_reply
     else:
         try:
             reply_text = await get_followup_reply(rec, history, payload.message)
-        except Exception:  # The local reply keeps chat available without Groq.
-            reply_text = _offline_reply(rec)
+        except Exception as e:
+            print("GROQ ERROR:", repr(e))
+            reply_text = (
+                "I couldn't connect to the AI service right now. "
+                f"Error: {str(e)}"
+                )
 
     bot_msg = ChatMessage(
         user_id=current_user.id,

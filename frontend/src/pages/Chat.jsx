@@ -158,7 +158,7 @@ export default function Chat() {
         minHeight: '100vh',
       }}
     >
-      {/* ================= HEADER ================= */}
+      {/* ================= HEADER ============= */}
 
       <header
         style={{
@@ -238,7 +238,7 @@ export default function Chat() {
         </div>
       </header>
 
-      {/* ================= MAIN ================= */}
+      {/* ================= MAIN =========== */}
 
       <main
         style={{
@@ -247,7 +247,7 @@ export default function Chat() {
           padding: '28px 20px 50px',
         }}
       >
-        {/* ================= CAREER SUMMARY ================= */}
+        {/* ============ CAREER SUMMARY ================= */}
 
         {recommendation && (
           <section
@@ -392,7 +392,7 @@ export default function Chat() {
           </div>
         )}
 
-        {/* ================= CHAT WORKSPACE ================= */}
+        {/* ============ CHAT WORKSPACE ================= */}
 
         <div
           style={{
@@ -404,7 +404,7 @@ export default function Chat() {
             alignItems: 'stretch',
           }}
         >
-          {/* ================= HISTORY SIDEBAR ================= */}
+          {/* ============== HISTORY SIDEBAR ================= */}
 
           {historyOpen && (
             <aside
@@ -549,7 +549,7 @@ export default function Chat() {
             </aside>
           )}
 
-          {/* ================= CHAT ================= */}
+          {/* ======== CHAT ============ */}
 
           <section
             style={{

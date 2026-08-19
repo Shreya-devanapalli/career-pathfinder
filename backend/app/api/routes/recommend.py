@@ -42,18 +42,13 @@ async def create_recommendation(
     """
 
     try:
-        # ================================================================
         # NORMALIZE SKILLS
-        # ================================================================
 
         normalized_skills: list[dict] = []
 
         for skill in payload.skills or []:
-
-            # ------------------------------------------------------------
             # Old format:
             # "Python"
-            # ------------------------------------------------------------
             if isinstance(skill, str):
 
                 skill_name = skill.strip()
@@ -68,13 +63,10 @@ async def create_recommendation(
                     }
                 )
 
-            # ------------------------------------------------------------
             # New format:
-            # {
-            #     "name": "Python",
-            #     "proficiency": "Advanced"
+            # {"name": "Python",
+            #  "proficiency": "Advanced"
             # }
-            # ------------------------------------------------------------
             elif isinstance(skill, dict):
 
                 skill_name = (
@@ -99,9 +91,7 @@ async def create_recommendation(
                     }
                 )
 
-        # ================================================================
         # REMOVE DUPLICATE SKILLS
-        # ================================================================
 
         unique_skills: list[dict] = []
         seen_skills: set[str] = set()
@@ -116,9 +106,7 @@ async def create_recommendation(
             seen_skills.add(key)
             unique_skills.append(skill)
 
-        # ================================================================
         # SEPARATE NAMES AND PROFICIENCY
-        # ================================================================
 
         skill_names = [
             skill["name"]
@@ -130,9 +118,7 @@ async def create_recommendation(
             for skill in unique_skills
         }
 
-        # ================================================================
         # VALIDATE BASIC PROFILE
-        # ================================================================
 
         if not payload.branch:
             raise HTTPException(
@@ -146,9 +132,7 @@ async def create_recommendation(
                 detail="At least one skill is required.",
             )
 
-        # ================================================================
         # GENERATE RECOMMENDATION
-        # ================================================================
 
         result = get_local_recommendation(
             db=db,
@@ -158,16 +142,14 @@ async def create_recommendation(
             proficiency_map=proficiency_map,
         )
 
-        # ================================================================
         # STORE RECOMMENDATION
-        # ================================================================
 
         recommendation = Recommendation(
             user_id=current_user.id,
 
             branch=payload.branch,
 
-            # Store the simple list expected by the API response. The richer
+            # Storing the simple list expected by the API response. The rich
             # proficiency information is used while the assessment is being
             # evaluated and does not belong to the Recommendation model.
             skills=skill_names,
@@ -203,11 +185,7 @@ async def create_recommendation(
             detail=f"Recommendation engine failed: {str(exc)}",
         ) from exc
 
-
-# ============================================================================
 # HISTORY
-# ============================================================================
-
 @router.get(
     "/history",
     response_model=list[RecommendationOut],
@@ -232,9 +210,7 @@ def history(
     )
 
 
-# ============================================================================
 # SINGLE RECOMMENDATION
-# ============================================================================
 
 @router.get(
     "/{recommendation_id}",

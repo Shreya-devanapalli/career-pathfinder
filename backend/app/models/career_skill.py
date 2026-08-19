@@ -2,7 +2,6 @@ from sqlalchemy import Column, BigInteger, String, ForeignKey
 
 from app.db.base import Base
 
-
 class CareerSkill(Base):
     __tablename__ = "career_skills"
 

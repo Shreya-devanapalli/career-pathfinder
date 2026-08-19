@@ -26,8 +26,7 @@ class Career(Base):
             "description": self.description or "",
             "industry": self.industry or "",
 
-            # These fields are currently stored in
-            # separate Supabase tables, not in careers.
+            # These fields are stored in separate Supabase tables
             "branches": [],
             "core_skills": [],
             "nice_skills": [],

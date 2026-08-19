@@ -49,10 +49,7 @@ app.add_middleware(
 def on_startup() -> None:
     Base.metadata.create_all(bind=engine)
 
-
-# ---------------------------------------------------------
 # API ROUTES
-# ---------------------------------------------------------
 
 app.include_router(auth.router)
 app.include_router(profile.router)

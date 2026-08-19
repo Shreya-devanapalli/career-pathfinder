@@ -22,9 +22,7 @@ from typing import Any
 from app.services.json_data_service import load_faq, load_intents
 
 
-# ============================================================
 # TEXT NORMALIZATION
-# ============================================================
 
 def _normalize(text: str) -> str:
     """Normalize text for safer matching."""
@@ -47,9 +45,7 @@ def _tokens(text: str) -> set[str]:
     return set(_normalize(text).split())
 
 
-# ============================================================
 # DATA LOADING
-# ============================================================
 
 def _get_intents() -> list[dict[str, Any]]:
     data = load_intents()
@@ -69,19 +65,16 @@ def _get_faqs() -> list[dict[str, Any]]:
     return data if isinstance(data, list) else []
 
 
-# ============================================================
 # INTENT DETECTION
-# ============================================================
 
 # More specific intents should be checked before broad intents.
 #
-# Example:
+# For Example:
 # "what skills am I missing?"
-#
+
 # should become skill_gap, not skills.
-#
+
 # "what should I do next?"
-#
 # should become next_steps, not get_started.
 INTENT_PRIORITY = [
     "skill_gap",
@@ -242,9 +235,7 @@ def _detect_intent(message: str) -> str | None:
     return best_intent
 
 
-# ============================================================
 # CAREER ROLE HELPERS
-# ============================================================
 
 def _extract_job_roles(recommendation) -> list[dict]:
     """Extract job role dictionaries safely from a recommendation."""
@@ -265,7 +256,6 @@ def _extract_job_roles(recommendation) -> list[dict]:
 
         else:
             # SQLAlchemy JSON fields should normally return dictionaries,
-            # but keep this safe for older records.
             result.append(
                 {
                     "job_role": str(role),
@@ -336,9 +326,7 @@ def _find_role_in_question(
     return None
 
 
-# ============================================================
 # ANSWERS: RECOMMENDATION
-# ============================================================
 
 def _answer_best_match(recommendation) -> str:
     roles = _extract_job_roles(recommendation)
@@ -397,9 +385,7 @@ def _answer_all_roles(recommendation) -> str:
     return "\n".join(lines)
 
 
-# ============================================================
 # ANSWERS: SKILLS
-# ============================================================
 
 def _answer_skills(recommendation) -> str:
     skills = recommendation.skills_to_learn or []
@@ -434,9 +420,7 @@ def _answer_courses(recommendation) -> str:
     )
 
 
-# ============================================================
 # ANSWERS: GET STARTED
-# ============================================================
 
 def _answer_get_started(recommendation) -> str:
     skills = recommendation.skills_to_learn or []
@@ -459,9 +443,7 @@ def _answer_get_started(recommendation) -> str:
     )
 
 
-# ============================================================
 # ANSWERS: COMPARISON
-# ============================================================
 
 def _answer_comparison(
     recommendation,
@@ -525,9 +507,7 @@ def _answer_comparison(
     )
 
 
-# ============================================================
 # ANSWERS: ROADMAP
-# ============================================================
 
 def _answer_roadmap(recommendation) -> str:
     skills = recommendation.skills_to_learn or []
@@ -566,9 +546,7 @@ def _answer_roadmap(recommendation) -> str:
     return "\n".join(parts)
 
 
-# ============================================================
 # ANSWERS: JOB READINESS
-# ============================================================
 
 def _answer_job_readiness(recommendation) -> str:
     skills = recommendation.skills_to_learn or []
@@ -589,9 +567,7 @@ def _answer_job_readiness(recommendation) -> str:
     )
 
 
-# ============================================================
 # ANSWERS: NEXT STEPS
-# ============================================================
 
 def _answer_next_steps(recommendation) -> str:
     skills = recommendation.skills_to_learn or []
@@ -611,9 +587,7 @@ def _answer_next_steps(recommendation) -> str:
     )
 
 
-# ============================================================
 # ANSWERS: SALARY
-# ============================================================
 
 def _answer_salary(
     recommendation,
@@ -621,18 +595,16 @@ def _answer_salary(
 ) -> str | None:
 
     # We intentionally do NOT invent salary figures.
-    #
+    
     # There is currently no salary dataset in the recommendation
     # structure shown by the project.
-    #
+    
     # Therefore this returns None and allows Groq to answer a
     # salary question if the user asks one.
     return None
 
 
-# ============================================================
 # ANSWERS: ROLE SUITABILITY
-# ============================================================
 
 def _answer_suitability_for_role(
     recommendation,
@@ -672,9 +644,7 @@ def _answer_suitability_for_role(
     )
 
 
-# ============================================================
 # FAQ MATCHING
-# ============================================================
 
 def _find_faq_answer(message: str) -> str | None:
     """
@@ -714,9 +684,7 @@ def _find_faq_answer(message: str) -> str | None:
     return None
 
 
-# ============================================================
 # MAIN LOCAL ANSWER FUNCTION
-# ============================================================
 
 def try_answer_locally(
     recommendation,
@@ -738,13 +706,13 @@ def try_answer_locally(
     # ---------------------------------------------------------
     # 1. Explicit role question detection
     # ---------------------------------------------------------
-    #
+    
     # Handle questions such as:
-    #
+    
     # "Is Data Scientist suitable for me?"
     # "Is ML Engineer a good fit?"
     # "What about Data Analyst?"
-    #
+    
     # Only do this when the user actually mentions a known role.
     # ---------------------------------------------------------
 
@@ -775,15 +743,11 @@ def try_answer_locally(
             message,
         )
 
-    # ---------------------------------------------------------
     # 2. Detect intent
-    # ---------------------------------------------------------
 
     intent = _detect_intent(message)
 
-    # ---------------------------------------------------------
     # 3. Recommendation-specific answers
-    # ---------------------------------------------------------
 
     if intent == "best_match":
         return _answer_best_match(recommendation)
@@ -830,22 +794,15 @@ def try_answer_locally(
         if salary_answer:
             return salary_answer
 
-    # ---------------------------------------------------------
     # 4. General FAQ
-    # ---------------------------------------------------------
 
     faq_answer = _find_faq_answer(message)
 
     if faq_answer:
         return faq_answer
 
-    # ---------------------------------------------------------
     # 5. Unknown question
-    # ---------------------------------------------------------
-    #
     # Returning None is IMPORTANT.
-    #
     # chat.py will then send the question to Groq.
-    # ---------------------------------------------------------
 
     return None

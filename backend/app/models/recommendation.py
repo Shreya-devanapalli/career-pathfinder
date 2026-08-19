@@ -14,7 +14,6 @@ class Recommendation(Base):
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
     user_id = Column(GUID, ForeignKey("users.id"), nullable=False)
 
-    # snapshot of the profile used to generate this recommendation
     branch = Column(String, nullable=False)
     skills = Column(JSON, default=list)
     interests = Column(JSON, default=list)

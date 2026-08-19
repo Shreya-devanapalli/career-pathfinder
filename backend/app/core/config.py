@@ -21,14 +21,11 @@ class Settings(BaseSettings):
     "http://localhost:5175",
 ]
 
-    # Ignore retired provider variables (for example, GEMINI_API_KEY) so an
-    # existing local .env continues to work during the Groq migration.
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
         extra="ignore",
     )
-
 
 @lru_cache
 def get_settings() -> Settings:
