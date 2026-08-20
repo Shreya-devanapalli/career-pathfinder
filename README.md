@@ -1,88 +1,73 @@
 # Career Pathfinder
 
-An NLP career guidance chatbot for engineering/college students. Students pick their branch, skills,
-and interests; the backend runs those through a **local, rule-based recommendation engine** (no AI call)
-to generate a recommended career, job roles, skills to learn, and courses. The result screen also shows a
-handful of **predefined "tag questions"** that are answered instantly from the recommendation, again with
-no AI call. Groq is only used as a fallback, for open-ended follow-up questions that don't match one of
-those predefined patterns. Everything is persisted per logged-in user in PostgreSQL.
+Career Pathfinder is an AI-powered career guidance platform that helps students discover suitable career paths based on their academic background, interests, skills, experience, work preferences, and career goals.
 
-**Stack:** React (Vite) · FastAPI · PostgreSQL (SQLAlchemy) · Groq (follow-up chat fallback only)
+## Features
 
-### Why the recommendation step does not call an AI model
+- Personalized career recommendations with match scores
+- Skill-gap analysis for recommended careers
+- Career-specific learning roadmap
+- Course and certification recommendations
+- AI-powered career chatbot
+- User authentication with persistent profiles
+- Recommendation and chat history
+- Responsive web interface
 
-Career recommendation is the first, highest-traffic step of the app — every single onboarding run used
-to make an AI request, which burned through the free-tier quota fast. That step is now handled by
-`backend/app/services/local_recommender.py`: it scores every row of a `careers` table (Postgres, same
-database as everything else) against the student's branch/skills/interests with plain weighted rules.
-It's instant, free, deterministic, and needs no API key at all.
+## Tech Stack
 
-The career data itself lives in the **`careers` table**, not hardcoded in Python — see "Adding more
-careers" below. Groq now only gets called from the follow-up chat (`/api/chat`), and even then only
-when the student's question doesn't match one of the predefined FAQ patterns handled locally by
-`backend/app/services/local_qa_service.py`. The five "tag question" chips shown under the result
-(*"Why is this my best match?"*, *"What skills should I learn first?"*, etc.) always hit the local
-answerer, so a full run of onboarding + tapping every tag question costs **zero** Groq requests.
+### Frontend
+- React
+- Vite
+- JavaScript
+- React Router
 
-### Adding more careers
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- JWT Authentication
 
-The `careers` table is the live source of truth — the app reads from it on every recommendation, so
-adding a role doesn't require a code change or redeploy. Two ways to add data:
+### Database & Services
+- PostgreSQL / Supabase
+- Groq API
+- REST APIs
 
-1. **Edit `DEFAULT_CAREERS` in `local_recommender.py`, then re-run the seed script** (`python -m
-   app.seed_careers`). This upserts by `title`, so it's safe to re-run any time you add entries — it
-   updates existing rows and inserts new ones, and never duplicates.
-2. **Insert/edit rows directly in Postgres** (psql, a GUI like TablePlus/DBeaver, or your own admin
-   script) — no code change or redeploy needed at all, since the app queries the table live on every
-   request.
+### Deployment
+- Vercel — Frontend
+- Render — Backend
+- Supabase — Database
 
-Each career row needs: `title`, `branches` (which academic branches it fits), `core_skills` /
-`nice_skills` (weighted differently in scoring), `interests`, `skills_to_learn`, and `courses` — all the
-list fields are plain JSON arrays of strings. If the table is ever empty (e.g. a brand-new database that
-hasn't been seeded yet), the app automatically seeds itself from `DEFAULT_CAREERS` on startup, and
-`local_recommender.py` also falls back to that in-memory list as a last resort so recommendations never
-hard-fail even if the DB is temporarily unreachable for that query.
+## How It Works
 
----
+1. Create an account or sign in.
+2. Complete the career assessment.
+3. Enter your branch, interests, skills, proficiency, experience, work preferences, and career goals.
+4. Receive personalized career recommendations.
+5. Explore your career matches, skill gaps, and roadmap.
+6. Ask Career AI questions about your career path and preparation.
 
-## Project structure
+## Project Structure
 
-```
+```text
 career-pathfinder/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py                 # FastAPI app, CORS, router registration, startup table creation
-│   │   ├── core/
-│   │   │   ├── config.py           # env-based settings (pydantic-settings)
-│   │   │   └── security.py         # password hashing + JWT
-│   │   ├── db/
-│   │   │   ├── base.py             # SQLAlchemy declarative base
-│   │   │   └── session.py          # engine / session factory
-│   │   ├── models/                 # SQLAlchemy models: User, Profile, Recommendation, ChatMessage, Career
-│   │   ├── schemas/                # Pydantic request/response schemas
 │   │   ├── api/
-│   │   │   ├── deps.py             # get_db, get_current_user (JWT)
-│   │   │   └── routes/             # auth, profile, recommend, chat
-│   │   ├── seed_careers.py         # (re-)populate the `careers` table from DEFAULT_CAREERS
-│   │   └── services/
-│   │       ├── local_recommender.py  # rule-based career scoring against the `careers` table — no AI
-│   │       ├── local_qa_service.py   # predefined FAQ / tag-question answers — no AI, used by /api/chat
-│   │       └── groq_service.py       # Groq prompt building + calls, fallback-only for /api/chat
-│   ├── requirements.txt
-│   └── .env.example
-└── frontend/
-    ├── src/
-    │   ├── api/client.js           # axios instance, attaches JWT from localStorage
-    │   ├── context/AuthContext.jsx # signup/login/logout/me, token persistence
-    │   ├── components/             # ProtectedRoute, Chip/Bubble/TypingDots/Tag chat UI
-    │   ├── pages/                  # Login, Signup, Onboarding (guided flow + result + tag questions + chat)
-    │   └── styles/theme.js         # shared color/font tokens
-    ├── package.json
-    └── .env.example
-```
-
----
-
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   └── main.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── api/
+│   └── package.json
+│
+└── README.md
 ## 1. Backend setup
 
 ### Prerequisites
@@ -129,7 +114,7 @@ CORS_ORIGINS=["http://localhost:5173"]
 Run the server:
 
 ```bash
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port 8001
 ```
 
 Tables are created automatically on startup (`Base.metadata.create_all`), and the `careers` table is
@@ -180,57 +165,8 @@ get an instant, locally-computed recommendation, five tappable "quick question" 
 themselves, and a follow-up chat box for anything else.
 
 ---
-
-## How it fits together
-
-1. **Signup/Login** (`/api/auth/signup`, `/api/auth/login`) issue a JWT, stored in `localStorage` on the
-   frontend and attached to every subsequent request via an axios interceptor.
-2. **Onboarding** posts the selected branch/skills/interests to `/api/profile` (saved per user) and then
-   to `/api/recommend`, which runs `local_recommender.get_local_recommendation` (pure Python, no AI),
-   and stores a `Recommendation` row.
-3. **Tag questions** — the result screen shows five predefined chips (`TAG_QUESTIONS` in
-   `Onboarding.jsx`, mirrored as `TAG_QUESTIONS` in `local_qa_service.py`). Tapping one, or typing a
-   question that matches the same intent, is answered by `local_qa_service.try_answer_locally` straight
-   from the stored recommendation — no Groq call.
-4. **Follow-up chat** posts to `/api/chat` with the `recommendation_id`. The backend first tries
-   `try_answer_locally`; only if that returns nothing does it fall back to
-   `groq_service.get_followup_reply`, loading the profile + recommendation + prior chat history as
-   context. Either way, both the user message and the bot reply are stored.
-5. **History** (`GET /api/recommend/history`, `GET /api/chat/{recommendation_id}`) is there if you want to
-   build a "past recommendations" view later — not wired into the UI yet, but the data is already being
-   saved.
-
-## Deploying (so you can demo it live instead of locally)
-
-The one thing that actually needs to persist across deploys/restarts is your Postgres data (users,
-recommendations, chat history, and now the `careers` table). Where you host the backend/frontend matters
-less than **where Postgres lives**:
-
-- **Vercel** doesn't provide a persistent Postgres instance itself — it's built for serverless functions
-  and static hosting with no durable local disk. If you deploy the FastAPI backend there, you still need
-  an external managed Postgres (see below); Vercel is really a better fit for the frontend than the
-  backend here.
-- **Railway / Render** both give you a managed, always-on Postgres database (a connection string you drop
-  into `DATABASE_URL`) alongside a place to run the FastAPI backend. This is the simplest path for this
-  project — one platform, backend + DB together, free tier available on both. Recommended for a panel
-  demo.
-- **Plain Docker** (e.g. `docker run postgres` on a VM) only persists data if you mount a **volume** for
-  Postgres's data directory. Without a volume, a container restart or redeploy wipes the database —
-  including your `careers` table — back to empty (though it'll auto-reseed from `DEFAULT_CAREERS` on next
-  startup; your users/recommendations/chat history won't come back, though).
-
-Practical steps for a Railway/Render-style deploy:
-1. Provision their managed Postgres, copy the connection string into `DATABASE_URL` on the backend
-   service's environment variables (along with `JWT_SECRET`, `CORS_ORIGINS` pointing at your deployed
-   frontend URL, and `GROQ_API_KEY` if you want the chat fallback to work).
-2. Deploy the backend — on first boot it creates all tables and auto-seeds `careers` since the table
-   starts empty.
-3. Deploy the frontend (Vercel is genuinely a good fit for this half) with `VITE_API_URL` pointing at the
-   deployed backend URL.
-4. From then on the database is persistent — redeploying the backend doesn't touch the data, since the
-   app code and the database are separate services.
-
----
+##Deployed URL:
+- https://career-pathfinder-mocha.vercel.app/
 
 ## Known limitations / next steps
 
